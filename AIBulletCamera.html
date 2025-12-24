@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nuraeye</title>
+<link rel="icon" type="image/png" href="pictures/logo.png">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+<style>
+/* ================= BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* ================= HEADER ================= */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #8000ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+}
+
+/* DESKTOP NAV */
+.header-nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-nav span {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  background: #111;
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.dropdown-menu a,
+.dropdown-menu span {
+  padding: 10px 18px;
+  font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-menu span {
+  text-align: center;
+  opacity: 0.6;
+}
+
+.dropdown-menu a:hover {
+  background: #1f2937;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* CONTACT */
+.contact-btn {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-btn {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #000;
+  transition: right 0.3s ease;
+  z-index: 2000;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #222;
+}
+
+.mobile-menu-header img {
+  height: 30px;
+}
+
+.mobile-close {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-item {
+  border-bottom: 1px solid #222;
+}
+
+.mobile-item-title {
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.mobile-submenu-panel {
+  display: none;
+  background: linear-gradient(180deg, #151820, #10131a);
+  padding: 16px 20px 18px;
+}
+
+.mobile-submenu-panel.show {
+  display: block;
+}
+
+.submenu-series {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.submenu-link {
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .header-nav,
+  .contact-btn {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+/* FEATURES GRID */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 24px;
+    text-align: center;
+  }
+
+  .feature-item span {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .feature-item p {
+    font-size: 14px;
+    color: #e5e7eb;
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 16px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="main-header">
+  <img src="pictures/nuraeye4.png" class="logo" alt="Nuraeye" />
+
+  <nav class="header-nav">
+    <div class="dropdown">
+      <a href="#">PRODUCTS <span>▾</span></a>
+      <div class="dropdown-menu">
+        <a href="AIBulletCamera.html">AI Bullet Camera</a>
+        <a href="#">AI PTZ Camera</a>
+        <a href="#">AI Dome Camera</a>
+        <span>Software</span>
+        <a href="Nuraeyevms.html">Nuraeye VMS</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="#">ABOUT US <span>▾</span></a>
+      <div class="dropdown-menu">
+        <a href="https://onchiptech.com/">Onchip Technologies</a>
+      </div>
+    </div>
+
+    <a href="#">RESOURCES</a>
+  </nav>
+
+  <a href="#" class="contact-btn">CONTACT US</a>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- ================= MOBILE MENU ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <img src="pictures/logo.png" alt="logo">
+    <div class="mobile-close" onclick="toggleMenu()">✕</div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title">SOLUTIONS</div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title" onclick="toggleProducts()">
+      PRODUCTS <span>⌄</span>
+    </div>
+    <div class="mobile-submenu-panel" id="productsMenu">
+      <a class="submenu-link">AI Bullet Camera</a>
+      <a class="submenu-link">AI PTZ Camera</a>
+      <a class="submenu-link">AI Dome Camera</a>
+      <div class="submenu-series">Software</div>
+      <a class="submenu-link">Nuraeye VMS</a>
+    </div>
+  </div>
+
+  <div class="mobile-item"><div class="mobile-item-title">COMPANY</div></div>
+  <div class="mobile-item"><div class="mobile-item-title">RESOURCES</div></div>
+  <div class="mobile-item"><div class="mobile-item-title">CONTACT US</div></div>
+</div>
+
+<!-- ================= VMS HERO ================= -->
+<section
+  style="
+    width:100%;
+    background:#000;
+    padding-top:72px;
+    display:flex;
+    justify-content:center;
+  "
+>
+  <div
+    style="
+      position:relative;
+      width:100%;
+      max-width:1400px;
+      overflow:hidden;
+    "
+  >
+    <!-- CAMERA IMAGE -->
+    <img
+      src="pictures/Bullet_camera.png"
+      alt="AI Bullet CCTV Camera"
+      style="
+        width:100%;
+        height:auto;
+        display:block;
+      "
+    />
+
+    <!-- TEXT OVERLAY (BOTTOM ONLY) -->
+    <div
+      style="
+        position:absolute;
+        left:0;
+        right:0;
+        bottom:0;
+        padding:32px 20px 40px;
+        background:linear-gradient(
+          to top,
+          rgba(0,0,0,0.9),
+          rgba(0,0,0,0.45),
+          transparent
+        );
+        text-align:center;
+      "
+    >
+      <h2 style="font-size:clamp(28px, 5vw, 42px); margin-bottom:10px;">
+        AI Bullet CCTV Camera
+      </h2>
+
+      <p
+        style="
+          font-size:clamp(14px, 3.5vw, 18px);
+          color:#d1d5db;
+          line-height:1.6;
+          max-width:900px;
+          margin:auto;
+        "
+      >
+        NuraEye VMS transforms your existing CCTV cameras into an intelligent,
+        AI-powered video platform that delivers real-time alerts, operational
+        insights, and investigation-ready evidence across all locations.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section
+  style="
+    margin-top:px;
+    width:100%;
+    min-height:700px;
+    background:url('image.png') center / cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  "
+>
+  <!-- Overlay -->
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.55);"></div>
+
+  <div style="position:relative; width:100%; max-width:1200px; padding:80px 24px;">
+
+    <!-- Heading -->
+    <div style="text-align:center; margin-bottom:60px;">
+      <h2 style="font-size:44px; margin-bottom:12px;">AI Bullet CCTV Camera</h2>
+      <p style="font-size:18px; color:#d1d5db; line-height:1.7; max-width:820px; margin:auto;">
+        NuraEye VMS transforms your existing CCTV cameras into an intelligent,
+        AI-powered video platform that delivers real-time alerts and insights.
+      </p>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features-grid">
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">photo_camera</span>
+        <p>3MP HD Resolution</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">wifi</span>
+        <p>Dual-band Wi-Fi (2.4GHz / 5GHz)</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">memory</span>
+        <p>EdgeAI Technology</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">mic</span>
+        <p>Two-Way Audio</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">security</span>
+        <p>Active Defense</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">visibility</span>
+        <p>Color Night Vision</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">zoom_in</span>
+        <p>Live View with 10× Digital Zoom</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">track_changes</span>
+        <p>Auto Tracking</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">smartphone</span>
+        <p>Remote Access via Mobile App</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">sd_storage</span>
+        <p>MicroSD (up to 256GB) + Cloud</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">water_drop</span>
+        <p>IP66 Weatherproof Design</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="material-icons-outlined">power</span>
+        <p>Plug-and-Play Setup</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section
+  style="
+    width:100%;
+    padding:100px 24px;
+    background:url('image.png') center/cover no-repeat;
+    position:relative;
+    color:#fff;
+  "
+>
+  <!-- overlay -->
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.65);"></div>
+
+  <div style="position:relative; max-width:1200px; margin:auto;">
+
+    <!-- Title -->
+    <h2
+      style="
+        font-size:48px;
+        font-weight:300;
+        margin-bottom:40px;
+      "
+    >
+      Discover Our Smart CCTV Bullet Camera Range
+    </h2>
+
+    <!-- Comparison Table -->
+    <div
+      style="
+        width:100%;
+        border-radius:10px;
+        overflow:hidden;
+        backdrop-filter:blur(8px);
+        background:rgba(255,255,255,0.05);
+      "
+    >
+      <!-- Header Row -->
+      <div
+        style="
+          display:grid;
+          grid-template-columns:2fr 1.5fr 1.5fr 1.5fr;
+          background:rgba(255,255,255,0.15);
+          padding:18px 20px;
+          font-size:18px;
+        "
+      >
+        <div>Category</div>
+        <div>Bullet 4G</div>
+        <div>Bullet Wi-Fi</div>
+        <div>Bullet PoE</div>
+      </div>
+
+      <!-- Row -->
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>Primary Connectivity</div>
+        <div>4G SIM (LTE CAT1)</div>
+        <div>Dual-Band Wi-Fi 2.4GHz / 5GHz</div>
+        <div>Wired LAN RJ-45</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>SIM Slot</div>
+        <div>Yes</div>
+        <div>No</div>
+        <div>No</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>Wi-Fi Support</div>
+        <div>No</div>
+        <div>Yes</div>
+        <div>No</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>Ethernet Port</div>
+        <div>No (optional fallback)</div>
+        <div>No</div>
+        <div>Yes – 10/100 Mbps</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>Power Method</div>
+        <div>DC 12V 1A</div>
+        <div>DC 12V 1A</div>
+        <div>PoE / DC 12V 1A</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>Installation Difficulty</div>
+        <div>Plug-N-Play</div>
+        <div>Plug-N-Play</div>
+        <div>Plug-N-Play</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>Cabling Required</div>
+        <div>No cable required</div>
+        <div>Only power cable</div>
+        <div>Single cable for power + network</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:2fr 1.5fr 1.5fr 1.5fr; padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div>Monthly Cost</div>
+        <div>SIM recharge needed</div>
+        <div>No recurring cost</div>
+        <div>No recurring cost</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section
+  style="
+    width:100%;
+    padding:120px 24px;
+    background:#000;
+    position:relative;
+    color:#fff;
+  "
+>
+  <div
+    style="
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:80px;
+      align-items:center;
+    "
+  >
+
+    <!-- LEFT: Dashboard Image (UNCHANGED) -->
+    <div>
+      <img
+        src="dashboard.png"
+        alt="AI VMS Dashboard"
+        style="
+          width:100%;
+          border-radius:12px;
+          box-shadow:0 40px 80px rgba(0,0,0,0.6);
+        "
+      />
+    </div>
+
+    <!-- RIGHT: Content -->
+    <div>
+
+      <h2 style="font-size:52px;font-weight:300;margin-bottom:18px;">
+        AI Security Stack for Modern Surveillance
+      </h2>
+
+      <p style="font-size:18px;color:#d1d5db;margin-bottom:40px;line-height:1.7;">
+        Lead every moment with our AI PTZ camera — intelligent surveillance
+        designed for critical outdoor security.
+      </p>
+
+      <!-- Accordion -->
+      <div id="aiStack" style="display:flex;flex-direction:column;gap:26px;">
+
+        <!-- EdgeAI -->
+        <div>
+          <button
+            class="ai-btn"
+            style="
+              background:rgba(255,255,255,0.08);
+              border:2px solid #9cff6a;
+              color:#9cff6a;
+              padding:18px 28px;
+              font-size:20px;
+              border-radius:6px;
+              cursor:pointer;
+              text-align:left;
+              width:fit-content;
+              box-shadow:0 0 20px rgba(156,255,106,0.35);
+            "
+          >
+            EdgeAI Analytics
+          </button>
+
+          <div class="ai-content" style="margin-top:14px;color:#e5e7eb;max-width:520px;display:block;">
+            <p>
+              8 powerful real-time detection on camera — humans, intrusions,
+              line crossing & more.
+            </p>
+            <a href="#" style="color:#e5e7eb;font-size:14px;text-decoration:none;">
+              KNOW MORE →
+            </a>
+          </div>
+        </div>
+
+        <!-- CloudAI -->
+        <div>
+          <button
+            class="ai-btn"
+            style="
+              background:rgba(255,255,255,0.08);
+              border:2px solid rgba(255,255,255,0.4);
+              color:#ffffff;
+              padding:18px 28px;
+              font-size:20px;
+              border-radius:6px;
+              cursor:pointer;
+              text-align:left;
+              width:fit-content;
+            "
+          >
+            CloudAI Analytics
+          </button>
+
+          <div class="ai-content" style="margin-top:14px;color:#e5e7eb;max-width:520px;display:none;">
+            <p>
+              CloudAI features are modular paid add-ons.
+              Enable analytics packs as required.
+            </p>
+          </div>
+        </div>
+
+        <!-- STQC -->
+        <div>
+          <button
+            class="ai-btn"
+            style="
+              background:rgba(255,255,255,0.08);
+              border:2px solid rgba(255,255,255,0.4);
+              color:#ffffff;
+              padding:18px 28px;
+              font-size:20px;
+              border-radius:6px;
+              cursor:pointer;
+              text-align:left;
+              width:fit-content;
+            "
+          >
+            STQC-Certified VMS
+          </button>
+
+          <div class="ai-content" style="margin-top:14px;color:#e5e7eb;max-width:520px;display:none;">
+            <p>
+              Secure, government-certified and compliant VMS platform.
+            </p>
+          </div>
+        </div>
+
+        <!-- ArcisGPT -->
+        <div>
+          <button
+            class="ai-btn"
+            style="
+              background:rgba(255,255,255,0.08);
+              border:2px solid rgba(255,255,255,0.4);
+              color:#ffffff;
+              padding:18px 28px;
+              font-size:20px;
+              border-radius:6px;
+              cursor:pointer;
+              text-align:left;
+              width:fit-content;
+            "
+          >
+            ArcisGPT
+          </button>
+
+          <div class="ai-content" style="margin-top:14px;color:#e5e7eb;max-width:520px;display:none;">
+            <p>
+              AI-powered investigation assistant for faster insights.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+function toggleProducts() {
+  document.getElementById("productsMenu").classList.toggle("show");
+}
+
+document.querySelectorAll('#aiStack .ai-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    document.querySelectorAll('#aiStack .ai-btn').forEach(b => {
+      b.style.borderColor = 'rgba(255,255,255,0.4)';
+      b.style.color = '#ffffff';
+      b.style.boxShadow = 'none';
+      b.nextElementSibling.style.display = 'none';
+    });
+
+    btn.style.borderColor = '#9cff6a';
+    btn.style.color = '#9cff6a';
+    btn.style.boxShadow = '0 0 20px rgba(156,255,106,0.35)';
+    btn.nextElementSibling.style.display = 'block';
+  });
+});
+
+
+</script>
+
+</body>
+</html>
